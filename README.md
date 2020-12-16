@@ -1,9 +1,15 @@
-# Rastreator (Eloquent branch)
+# Rastreator (Simulation branch)
 ROS2 differential wheel robot.
 
 
 
 ## Installation
+
+Clone repository and checkout branch `simulation`
+
+```bash
+git clone -b simulation https://github.com/iggyrrieta/rastreator
+```
 
 
 
@@ -23,17 +29,18 @@ This will install all `Ros2` and `Gazebo9` apt packages and also all `Python` de
 
 When the installation ends, copy the following in your `~/.bashrc` file:
 
-[Create ROS2/GAZEBO9 local variables](https://github.com/ageve/ros2_navigation/tree/rastreator/doc/installation/Local%20variables%20for%20ROS2%20and%20Gazebo.md)
+[Create ROS2/GAZEBO9 local variables](https://github.com/iggyrrieta/rastreator/blob/master/doc/installation/Local%20variables%20for%20ROS2%20and%20Gazebo.md)
+
 
 
 
 ### Method 2: Step by step
 
-1. [Install ROS2 eloquent](https://github.com/iggyrrieta/rastreator/blob/eloquent/doc/installation/ROS2%20Eloquent%20installation.md)
+1. [Install ROS2 eloquent](https://github.com/iggyrrieta/rastreator/blob/master/doc/installation/ROS2%20Eloquent%20installation.md)
 
-2. [Install GAZEBO9](https://github.com/iggyrrieta/rastreator/blob/eloquent/doc/installation/Gazebo%20installation.md)
+2. [Install GAZEBO9](https://github.com/iggyrrieta/rastreator/blob/master/doc/installation/Gazebo%20installation.md)
 
-3. [Create ROS2/GAZEBO9 local variables](https://github.com/iggyrrieta/rastreator/blob/eloquent/doc/installation/Local%20variables%20for%20ROS2%20and%20Gazebo.md)
+3. [Create ROS2/GAZEBO9 local variables](https://github.com/iggyrrieta/rastreator/blob/master/doc/installation/Local%20variables%20for%20ROS2%20and%20Gazebo.md)
 
 4. Install python dependencies using `pip`
 
@@ -41,45 +48,18 @@ When the installation ends, copy the following in your `~/.bashrc` file:
 
    `pip install -r simulation_requirements.txt`
    
-5. Instal the following apt dependencies:
-
-   `sudo apt-get install v4l-utils`
-   
-   `sudo apt-get install ros-eloquent-navigation2`
-   
-   `sudo apt-get install ros-eloquent-nav2-bringup`
-   
-   `sudo apt-get install ros-eloquent-image-transport-plugins`
-   
-   `sudo apt-get install ros-eloquent-dynamixel-sdk`
-
-   `sudo apt-get install python-rosdep2`
+5. Install `sympy`:
    
    `sudo apt install python3-sympy`
 
 
 
-#### Install navigation2
-
-In my case I couldn't make it work without building it from source:
-
-```bash
-# Go to <ros2 workspace folder>/src
-git clone https://github.com/ros-planning/navigation2.git --branch eloquent-devel
-# Go back to the root ros2 workspace folder
-rosdep install -y -r -q --from-paths src --ignore-src --rosdistro eloquent
-# Then
-sudo rosdep init
-# and
-rosdep update
-```
-
-
-
 ## Build
 
+To build all packages needed for the simulation tests (if we are using branch `simulation`):
+
 ```bash
-colcon build --symlink-install
+colcon build
 ```
 
 Source the compilation if you want to test a package using same terminal:
@@ -90,22 +70,17 @@ source install/local_setup.bash
 
 
 
-## Remove all ROS related
-
-> Just in case you want to remove all ROS installed (be carefull this will remove all previous installation)
-
-```bash
-sudo apt-get remove ros-*
-```
-
-
-
 ## Usage
 
+### Simulation: TEST EKF
 
+Terminal 1:
 
-### Manual control
+```bash
+ros2 launch rastreator_simulation ekf_sim.launch.py 
+```
 
-Terminal 1 -> `ros2 launch rastreator_bringup start_manual.launch.py`
+A `Gazebo` and `rqt_plot` window should pop up.
 
-Terminal 2 -> `rviz2` (file/open Config/{path/to/rastreator_description/rviz/rastreator_only.rviz})
+More info [here](rastreator_simulation)
+

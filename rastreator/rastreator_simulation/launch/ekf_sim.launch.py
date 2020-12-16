@@ -43,17 +43,12 @@ def generate_launch_description():
             parameters=[params_dir],
             output='screen'),
 
-        ExecuteProcess(
-            name='START-PLOT',
-            cmd=['rqt', 
-                 '-s', 'rqt_plot',
-                 '--args', '/ekf/estimated_state/x', 
-                           '/ekf/estimated_state/y',
-                           '/ekf/true_state/x', 
-                           '/ekf/true_state/y'],
-            output = 'screen',
-            shell='True'
-        ),
+        Node(
+            package='rqt_plot',
+            node_executable='rqt_plot',
+            arguments=['/ekf/estimated_state/x:y', '/ekf/true_state/x:y'],
+            output='screen'),
+
         ExecuteProcess(
             cmd=['gazebo', '--verbose', world, '-s', 'libgazebo_ros_init.so'],
             output='screen'),

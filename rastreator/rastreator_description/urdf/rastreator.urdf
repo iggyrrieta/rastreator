@@ -25,8 +25,8 @@
   <!--**************************************************************-->
   <link name="base_link">
     <inertial>
-      <mass value="2.0"/>
-      <inertia ixx="0.009354833333333335" ixy="0.0" ixz="0.0" iyy="0.006048833333333333" iyz="0.0" izz="0.010027333333333334"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.004677416666666667" ixy="0.0" ixz="0.0" iyy="0.0030244166666666666" iyz="0.0" izz="0.005013666666666667"/>
     </inertial>
     <!--COLLISION-->
     <collision>
@@ -44,7 +44,7 @@
   </link>
   <!--JOINT-->
   <joint name="base_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.0 0.0 0.0205"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0235"/>
     <parent link="base_footprint"/>
     <child link="base_link"/>
   </joint>
@@ -53,8 +53,8 @@
   <!--**************************************************************-->
   <link name="left_wheel_link">
     <inertial>
-      <mass value="0.3"/>
-      <inertia ixx="8.731875e-05" ixy="0" ixz="0" iyy="8.731875e-05" iyz="0" izz="0.0001584375"/>
+      <mass value="0.15"/>
+      <inertia ixx="4.3659375e-05" ixy="0" ixz="0" iyy="4.3659375e-05" iyz="0" izz="7.921875e-05"/>
     </inertial>
     <!--COLLISION-->
     <collision>
@@ -72,7 +72,7 @@
   </link>
   <!--JOINT-->
   <joint name="wheel_left_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.042 0.078 0.012"/>
+    <origin rpy="0 0 0" xyz="-0.075 0.076 0.01501"/>
     <child link="left_wheel_link"/>
     <parent link="base_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -82,8 +82,8 @@
   <!--**************************************************************-->
   <link name="right_wheel_link">
     <inertial>
-      <mass value="0.3"/>
-      <inertia ixx="8.731875e-05" ixy="0" ixz="0" iyy="8.731875e-05" iyz="0" izz="0.0001584375"/>
+      <mass value="0.15"/>
+      <inertia ixx="4.3659375e-05" ixy="0" ixz="0" iyy="4.3659375e-05" iyz="0" izz="7.921875e-05"/>
     </inertial>
     <!--COLLISION-->
     <collision>
@@ -101,7 +101,7 @@
   </link>
   <!--JOINT-->
   <joint name="wheel_right_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.045 -0.08 0.012"/>
+    <origin rpy="0 0 0" xyz="-0.075 -0.081 0.01501"/>
     <child link="right_wheel_link"/>
     <parent link="base_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -139,16 +139,20 @@
   <!--**************************************************************-->
   <!--LASER/LIDAR-->
   <!--**************************************************************-->
-  <link name="lidar_link">
+  <link name="sensor_laser">
+    <!--INERTIA-->
     <inertial>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
       <mass value="0.1"/>
     </inertial>
+    <!--COLLISION-->
     <collision>
       <geometry>
         <mesh filename="package://rastreator_description/mesh/rplidar_a3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
+    <gravity>false</gravity>
+    <!--VISUAL-->
     <visual>
       <geometry>
         <mesh filename="package://rastreator_description/mesh/rplidar_a3.stl" scale="0.001 0.001 0.001"/>
@@ -156,74 +160,16 @@
       <material name="dark"/>
     </visual>
   </link>
-  <joint name="lidar_joint" type="fixed">
-    <origin rpy="0 0.0 0" xyz="0.0 0.0 0.127"/>
-    <child link="lidar_link"/>
-    <parent link="base_link"/>
-  </joint>
-  <!--**************************************************************-->
-  <!--CAMERA T265-->
-  <!--**************************************************************-->
-  <link name="t265_link">
-    <!--INERTIA-->
-    <!--Not calling macro, just small values-->
-    <inertial>
-      <mass value="0.005"/>
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-    </inertial>
-    <collision>
-      <geometry>
-        <mesh filename="package://rastreator_description/mesh/intelrealsenseT265.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-    </collision>
-    <visual>
-      <geometry>
-        <mesh filename="package://rastreator_description/mesh/intelrealsenseT265.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-  </link>
-  <joint name="t265_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.117 -0.005 0.087"/>
-    <child link="t265_link"/>
-    <parent link="base_link"/>
-  </joint>
-  <!--**************************************************************-->
-  <!--CAMERA D435-->
-  <!--**************************************************************-->
-  <link name="d435_link">
-    <!--INERTIA-->
-    <!--Not calling macro, just small values-->
-    <inertial>
-      <mass value="0.005"/>
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-    </inertial>
-    <collision>
-      <geometry>
-        <mesh filename="package://rastreator_description/mesh/intelrealsenseD435.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-    </collision>
-    <visual>
-      <geometry>
-        <mesh filename="package://rastreator_description/mesh/intelrealsenseD435.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-  </link>
-  <joint name="d435_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.117 -0.014 0.112"/>
-    <child link="d435_link"/>
+  <!--JOINT-->
+  <joint name="sensor_laser_joint" type="fixed">
+    <origin rpy="0 0.0 0" xyz="0.0 0.0 0.132"/>
+    <child link="sensor_laser"/>
     <parent link="base_link"/>
   </joint>
   <!--**************************************************************-->
   <!--IMU-->
   <!--**************************************************************-->
   <link name="imu_link">
-    <!--INERTIA-->
-    <inertial>
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-      <mass value="0.01"/>
-    </inertial>
     <!--COLLISION-->
     <collision>
       <geometry>
@@ -238,6 +184,18 @@
       </geometry>
       <material name="dark"/>
     </visual>
+    <!--
+        <sensor name="rastreator_imu" type="imu">
+          <always_on>true</always_on>
+          <update_rate>${update_rate}</update_rate>
+          <plugin name="imu" filename="libgazebo_ros_imu_sensor.so">
+            <ros>
+              <namespace>/sim</namespace>
+              <argument>~/out:=imu_sim</argument>
+            </ros>
+          </plugin>
+        </sensor>
+        -->
   </link>
   <!--JOINT-->
   <joint name="sensor_imu_joint" type="fixed">
@@ -250,9 +208,6 @@
   <!--**************************************************************-->
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>
-  </gazebo>
-  <gazebo reference="imu_link">
-    <material>Gazebo/FlatBlack</material>
   </gazebo>
   <gazebo reference="left_wheel_link">
     <material>Gazebo/FlatBlack</material>
@@ -279,14 +234,14 @@
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
     <kp>1000000.0</kp>
-    <kd>10.0</kd>
+    <kd>100.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>1.0</maxVel>
   </gazebo>
-  <gazebo reference="t265_link">
+  <gazebo reference="sensor_laser">
     <material>Gazebo/FlatBlack</material>
   </gazebo>
-  <gazebo reference="d435_link">
+  <gazebo reference="imu_link">
     <material>Gazebo/FlatBlack</material>
   </gazebo>
   <!--======= GAZEBO PLUGINS ===========-->
@@ -339,69 +294,6 @@
       <rpy_offsets>0 0 0</rpy_offsets>
       <gaussian_noise>0</gaussian_noise>
     </plugin>
-  </gazebo>
-  <!--lidar-->
-  <gazebo reference="lidar_link">
-    <material>Gazebo/FlatBlack</material>
-    <inertial>
-      <inertia>
-        <ixx>0.001</ixx>
-        <ixy>0.000</ixy>
-        <ixz>0.000</ixz>
-        <iyy>0.001</iyy>
-        <iyz>0.000</iyz>
-        <izz>0.001</izz>
-      </inertia>
-      <mass>0.125</mass>
-    </inertial>
-    <collision name="lidar_link_sensor_collision">
-      <geometry>
-        <cylinder>
-          <radius>0.0508</radius>
-          <length>0.055</length>
-        </cylinder>
-      </geometry>
-    </collision>
-    <visual name="lidar_link_sensor_visual">
-      <geometry>
-        <mesh>
-          <uri>model://rastreator_description/mesh/rplidar_a3.stl</uri>
-          <scale>0.001 0.001 0.001</scale>
-        </mesh>
-      </geometry>
-    </visual>
-    <sensor name="lidar_plugin" type="ray">
-      <always_on>true</always_on>
-      <visualize>true</visualize>
-      <update_rate>30</update_rate>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>360</samples>
-            <resolution>1.000000</resolution>
-            <min_angle>0.000000</min_angle>
-            <max_angle>6.280000</max_angle>
-          </horizontal>
-        </scan>
-        <range>
-          <min>0.120000</min>
-          <max>3.5</max>
-          <resolution>0.015000</resolution>
-        </range>
-        <noise>
-          <type>gaussian</type>
-          <mean>0.0</mean>
-          <stddev>0.01</stddev>
-        </noise>
-      </ray>
-      <plugin filename="libgazebo_ros_ray_sensor.so" name="plugin_lidar">
-        <ros>
-          <argument>~/out:=scan</argument>
-        </ros>
-        <output_type>sensor_msgs/LaserScan</output_type>
-        <frame_name>lidar_link</frame_name>
-      </plugin>
-    </sensor>
   </gazebo>
 </robot>
 

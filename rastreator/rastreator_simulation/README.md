@@ -6,7 +6,7 @@
 
   `constant_cmd.py`
 
-![](../../img/constant_cmd.gif)
+![](../img/constant_cmd.gif)
 
 
 
@@ -18,7 +18,7 @@
   
   
   
-  ![](../../img/test3_ekf_ownclass_odom.png)
+  ![](../img/test3_ekf_ownclass_odom.png)
   
   
   
@@ -26,7 +26,7 @@
   
   
 
-![](../../img/plot_ekf_test.png)
+![](../img/plot_ekf_test.png)
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-![](../../img/output_topic_ekf.png)
+![](../img/output_topic_ekf.png)
 
 
 

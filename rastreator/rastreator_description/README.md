@@ -162,6 +162,6 @@ In this case I am creating the `urdf` file from the `xacro` file using the pytho
 Once the `urdf` file is created, is it possible to generate a `SDF` file as follows:
 
 ```bash
-gz sdf -p rastreator.urdf > ../model/rastreator_description/model.sdf
+gz sdf -p rastreator.urdf > model.sdf
 ```
 
