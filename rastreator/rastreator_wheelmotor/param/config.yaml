@@ -1,0 +1,24 @@
+rastreator_wheelmotor:
+
+  ros__parameters:
+
+    motor:
+    
+      usb_port: "/dev/ttyUSB0"
+      id_right: 1
+      id_left: 2
+      baud_rate: 57600
+      protocol_version: 2.0
+
+    joint_state:
+
+      topic_name: "joint_states"
+      frame_id: "base_link"
+
+    odometry:
+    
+      wheel_separation: 0.160
+      wheel_radius: 0.033
+      publish_tf: true
+      frame_id: "odom"
+      child_frame_id: "base_footprint"

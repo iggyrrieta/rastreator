@@ -1,0 +1,43 @@
+rastreator_joystick:
+  ros__parameters:
+
+    configuration:
+      dev: '/dev/input/js0'
+      deadzone : 0.12
+      axis_linear : 1
+      axis_angular : 0
+      scale_linear : 1
+      scale_angular : 1
+    
+    commands:
+      #jetbot nano 
+      ###############
+      #        axes[6] = left arrow(-1.0)/ right arrow(1.0)
+      #        axes[7] = up arrow(1.0)/ down arrow(-1.0)
+      #        buttons[0] = A (1.0)
+      #        buttons[1] = B (1.0)
+      #        buttons[3] = X (1.0)
+      #        buttons[4] = Y (1.0)
+      #ubuntu 18.04 
+      ###############
+      #        axes[0] = left arrow(-1.0)/ right arrow(1.0)
+      #        axes[1] = up arrow(1.0)/ down arrow(-1.0)
+      #        buttons[2] = A (1.0)
+      #        buttons[1] = B (1.0)
+      #        buttons[3] = X (1.0)
+      #        buttons[0] = Y (1.0)
+      axes_x: 1
+      axes_y: 0
+      button_a: 2
+      button_b: 1
+      button_x: 3
+      button_y: 0
+
+    speed:
+      linear_gain: 10.0
+      angular_gain: 5.0
+      velocity: 1.0
+
+    
+
+                         

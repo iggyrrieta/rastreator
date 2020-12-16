@@ -1,0 +1,14 @@
+rastreator_simulation:
+  ros__parameters:
+    velocity: 2.0
+    yaw_rate : 1.8
+    std_range : 0.3
+    std_bearing : 0.1
+    landmarks : '[[5, 10], [10, 5]]'
+    dt: 1.0
+    
+    
+
+    
+
+                         

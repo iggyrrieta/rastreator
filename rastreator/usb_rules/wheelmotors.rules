@@ -1,0 +1,3 @@
+# USB rules
+#
+KERNEL=="ttyUSB0", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", MODE:="0777", SYMLINK+="wheelmotors"
