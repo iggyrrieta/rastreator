@@ -19,11 +19,9 @@ from ament_index_python.packages import get_package_share_directory
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
 from launch.substitutions import LaunchConfiguration
-from launch.actions.execute_process import ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from nav2_common.launch import RewrittenYaml
 
 #=====================================
 #             VARIABLES
@@ -32,23 +30,17 @@ from nav2_common.launch import RewrittenYaml
 pkg_name = 'rastreator_navigation2'
 # Folder inside package to find yaml
 param_folder = 'param'
-param_file = 'localization_sim.yaml'
+param_file = 'rastreator.yaml'
 # Folder inside package to find map
 map_folder = 'map'
 map_file = 'map.yaml'
-
-
 
 #=====================================
 #        LAUNCH CODE: Navigation2
 #=====================================
 def generate_launch_description():
 
-    namespace = LaunchConfiguration('namespace')
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false') # True if sim
-    autostart = LaunchConfiguration('autostart')
-    lifecycle_nodes = ['map_server', 'amcl']
-
+    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
     # Parameters
     params_dir = LaunchConfiguration(
@@ -66,24 +58,10 @@ def generate_launch_description():
                  map_folder,
                  map_file))
 
-    remappings = [('/tf', 'tf'),
-                  ('/tf_static', 'tf_static')]
-
-    param_substitutions = {
-        'use_sim_time': use_sim_time,
-        'yaml_filename': map_config_dir}
-
-    configured_params = RewrittenYaml(
-        source_file=params_dir,
-        root_key=namespace,
-        param_rewrites=param_substitutions,
-        convert_types=True)
+    # Nav2 dir
+    nav2_launch_file_dir = os.path.join(get_package_share_directory('nav2_bringup'), 'launch')
 
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'namespace', default_value='',
-            description='Top-level namespace'),
-
         DeclareLaunchArgument(
             'map',
             default_value=map_config_dir,
@@ -96,35 +74,15 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'use_sim_time',
-            default_value='true',
+            default_value='false',
             description='Use simulation (Gazebo) clock if true'),
 
-        DeclareLaunchArgument(
-            'autostart', default_value='true',
-            description='Automatically startup the nav2 stack'),
-        Node(
-            package='nav2_map_server',
-            executable='map_server',
-            name='map_server',
-            output='screen',
-            parameters=[configured_params],
-            remappings=remappings),
-
-        Node(
-            package='nav2_amcl',
-            executable='amcl',
-            name='amcl',
-            output='screen',
-            parameters=[configured_params],
-            remappings=remappings),
-
-        Node(
-            package='nav2_lifecycle_manager',
-            executable='lifecycle_manager',
-            name='lifecycle_manager_localization',
-            output='screen',
-            parameters=[{'use_sim_time': use_sim_time},
-                        {'autostart': autostart},
-                        {'node_names': lifecycle_nodes}])
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([nav2_launch_file_dir, '/nav2_bringup_launch.py']),
+            launch_arguments={
+                'map': map_config_dir,
+                'use_sim_time': use_sim_time,
+                'params': params_dir}.items(),
+        )
     ]) 
 

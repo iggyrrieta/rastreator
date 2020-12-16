@@ -77,7 +77,7 @@ git clone https://github.com/IntelRealSense/realsense-ros -b eloquent
 ## Clone depth-to-laserscan 
 
 ```bash
-git clone https://github.com/ros-perception/depthimage_to_laserscan -b foxy-devel
+git clone https://github.com/ros-perception/depthimage_to_laserscan -b dashing-devel
 ```
 
 

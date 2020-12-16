@@ -51,7 +51,7 @@ TRAJECTORY_BUILDER_2D.max_range = 20. --(Por defecto 30)
 TRAJECTORY_BUILDER_2D.missing_data_ray_length = 5. --(Por defecto 5)
 
 --Si se usa IMU marcar imu, sino marcar CSM
-TRAJECTORY_BUILDER_2D.use_imu_data = true  --(Por defecto true)
+TRAJECTORY_BUILDER_2D.use_imu_data = false  --(Por defecto true)
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true --(Por defecto false)
 --CSM
 TRAJECTORY_BUILDER_2D.real_time_correlative_scan_matcher.linear_search_window = 0.20 --(Por defecto 0.1)

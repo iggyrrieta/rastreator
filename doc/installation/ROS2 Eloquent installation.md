@@ -1,13 +1,12 @@
-# ROS2 Foxy installation
+# ROS2 Eloquent installation
 
-Install ROS2 Foxy (Debian packages):
+Install ROS2 Eloquent (Debian packages):
 
-References : [ROS2 foxy installation](https://index.ros.org/doc/ros2/Installation/Foxy/Linux-Install-Debians/)
+References : [ROS2 eloquent installation](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Install-Debians/)
 
 1. Setup Local
 
    ```bash
-   sudo apt update && sudo apt install locales
    sudo locale-gen en_US en_US.UTF-8
    sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
    export LANG=en_US.UTF-8
@@ -33,7 +32,7 @@ References : [ROS2 foxy installation](https://index.ros.org/doc/ros2/Installatio
    ```
 
    ```bash
-   sudo apt install ros-foxy-desktop
+   sudo apt install ros-eloquent-desktop
    ```
 
 4. Install Colcon

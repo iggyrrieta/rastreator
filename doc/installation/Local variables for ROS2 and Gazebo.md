@@ -19,8 +19,8 @@ Open `~/.bashrc` with your favourite editor and insert the following:
 #=============
 # ROS | ROS2
 #=============
-export ROS_DISTRO=foxy 
-export ROS_dir=ros        #CHANGE 1: THIS USING YOUR ROS2 FOLDER NAME
+export ROS_DISTRO=eloquent 
+export ROS_dir=ros2_ws        #CHANGE 1: THIS USING YOUR ROS2 FOLDER NAME
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/$ROS_dir/$ROS_DISTRO/install/local_setup.bash

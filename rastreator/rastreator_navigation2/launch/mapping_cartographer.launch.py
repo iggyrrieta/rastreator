@@ -32,7 +32,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     realsense_prefix = get_package_share_directory('rastreator_navigation2')
     cartographer_config_dir = LaunchConfiguration('cartographer_config_dir', default=os.path.join(realsense_prefix, 'param'))
-    configuration_basename = LaunchConfiguration('configuration_basename', default='mapper_cartographer_camera.lua')
+    configuration_basename = LaunchConfiguration('configuration_basename', default='mapper_cartographer.lua')
 
     resolution = LaunchConfiguration('resolution', default='0.05')
     publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
@@ -69,6 +69,13 @@ def generate_launch_description():
             'publish_period_sec',
             default_value=publish_period_sec,
             description='OccupancyGrid publishing period'),
+
+        ExecuteProcess(
+            name='START-NAV2',
+            cmd=['ros2', 'launch', 'nav2_bringup', 'navigation_launch.py'],
+            output = 'screen',
+            shell='True'
+        ),
         Node(
             package='cartographer_ros',
             node_executable='occupancy_grid_node',

@@ -29,14 +29,13 @@ echo "RASTREATOR ROS2 DIFF WHEEL ROBOT"
 echo "====================================="
 # INSTALL ROS2
 while true; do
-    read -p "Do you wish to install FOXY distribution for ROS2?(y/n): " yn
+    read -p "Do you wish to install ELOQUENT distribution for ROS2?(y/n): " yn
     case $yn in
         [Yy]* ) 
 		echo "=====================================";
 		echo "Adding repository and source list";
 		echo "=====================================";
 		# SETUP LOCAL
-		sudo apt update && sudo apt install locales;
 		sudo locale-gen en_US en_US.UTF-8;
 		sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8;
 		export LANG=en_US.UTF-8;
@@ -52,9 +51,9 @@ while true; do
 		echo "==================";
 		sudo apt update;
 		echo "====================";
-		echo "Installing ROS2 FOXY";
+		echo "Installing ROS2 Eloquent";
 		echo "====================";
-		sudo apt install ros-foxy-desktop; break;;
+		sudo apt install ros-eloquent-desktop; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -63,14 +62,14 @@ echo "END"
 echo "=====================================================";
 # INSTALL GAZEBO
 while true; do
-    read -p "Do you wish to install GAZEBO11 for simulation purpose?(y/n): " yn
+    read -p "Do you wish to install GAZEBO for simulation purpose?(y/n): " yn
     case $yn in
         [Yy]* ) 
 		echo "====================";
-		echo "Installing GAZEBO11";
+		echo "Installing GAZEBO9";
 		echo "====================";
-		sudo apt install gazebo11; 
-		sudo apt install ros-foxy-gazebo-ros-pkgs; break;;
+		sudo apt-get install gazebo9; 
+		sudo apt install ros-eloquent-gazebo-ros-pkgs; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -84,7 +83,7 @@ while true; do
 		echo "==========================";
 		echo "Installing DYNAMIXEL SDK";
 		echo "==========================";
-		sudo apt install ros-foxy-dynamixel-sdk; break;;
+		sudo apt install ros-eloquent-dynamixel-sdk; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -98,10 +97,10 @@ while true; do
 		echo "==========================";
 		echo "Installing NAVIGATION2";
 		echo "==========================";
-		sudo apt install ros-foxy-navigation2;
-		sudo apt install ros-foxy-nav2-bringup; 
-        sudo apt install ros-foxy-cartographer-ros;
-        sudo apt install ros-foxy-slam-toolbox; break;;
+		sudo apt install ros-eloquent-navigation2;
+		sudo apt install ros-eloquent-nav2-bringup;
+		sudo apt install ros-eloquent-cartographer-ros;
+		sudo apt install ros-eloquent-slam-toolbox; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -112,9 +111,10 @@ echo "=================================="
 echo "Installing packages-dependencies"
 echo "=================================="
 # INSTALL PACKAGES AND DEPENDENCIES
-sudo apt install python3-colcon-common-extensions
-sudo apt install v4l-utils
-sudo apt install ros-foxy-image-transport-plugins
+sudo apt-get install python3-colcon-common-extensions
+sudo apt-get install v4l-utils
+sudo apt-get install ros-eloquent-image-transport-plugins
+sudo apt-get install python-rosdep2
 echo "END"
 echo "=====================================================";
 echo "=================================="
@@ -156,12 +156,13 @@ sudo apt install --no-install-recommends -y \
 sudo apt install --no-install-recommends -y \
   libcunit1-dev
 # install some pip packages needed for rastreator  
-pip install catkin_pkg 
-pip install empy 
-pip install lark 
+pip install catkin_pkg
+pip install empy
+pip install lark
+pip install numpy
 sudo apt install python3-sympy
-pip install numpy 
 pip install PySide2
+pip install MatPlotLib
 pip install xacro
 echo "END"
 echo "=====================================================";

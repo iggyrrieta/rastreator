@@ -48,15 +48,14 @@ def generate_launch_description():
         ),
 
         ExecuteProcess(
-            name='START-JOYSTICK',
-            cmd=['ros2', 'launch', 'rastreator_joystick', 'start.launch.py'],
+            name='START-RASTREATOR',
+            cmd=['ros2', 'launch', 'rastreator_wheelmotor', 'start.launch.py'],
             output = 'screen',
             shell='True'
         ),
-
         ExecuteProcess(
-            name='START-RASTREATOR',
-            cmd=['ros2', 'launch', 'rastreator_wheelmotor', 'start.launch.py'],
+            name='START-JOYSTICK',
+            cmd=['ros2', 'launch', 'rastreator_joystick', 'start.launch.py'],
             output = 'screen',
             shell='True'
         )

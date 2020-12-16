@@ -22,23 +22,15 @@ import launch_ros.actions
 def generate_launch_description():
 
     return LaunchDescription([
-        # Realsense T265
+        # Realsense
         launch_ros.actions.Node(
             package='realsense2_camera', 
             node_namespace='t265',
             node_executable='realsense2_camera_node',
             parameters = [{'device_type': 't265',
-                           'base_frame_id':'t265_link',
-                           'odom_frame_id':'t265_link',
-                           'pose_frame_id':'t265_pose',
-                           'pose_optical_frame_id':'t265_pose_optical',
-                           'gyro_frame_id':'t265_gyro',
-                           'imu_optical_frame_id':'t265_imu',
-                           'accel_frame_id':'t265_accel',
-                           'accel_optical_frame_id':'t265_accel_optical',
                            'enable_fisheye1': False,
                            'enable_fisheye2': False,
-                           'topic_odom_in': 'odom',
+                           'topic_odom_in': 'odom_t265',
                            'calib_odom_file': '',
                            'unite_imu_method': 'linear_interpolation',
                            }],
