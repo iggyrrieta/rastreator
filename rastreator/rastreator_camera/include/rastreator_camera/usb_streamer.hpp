@@ -23,8 +23,8 @@
 //ROS2
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/image.hpp"
-#include "image_transport/image_transport.hpp"
-#include "camera_info_manager/camera_info_manager.hpp"
+#include "image_transport/image_transport.h"
+#include "camera_info_manager/camera_info_manager.h"
 
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/image.hpp"

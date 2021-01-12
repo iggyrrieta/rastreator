@@ -113,7 +113,6 @@ echo "=================================="
 # INSTALL PACKAGES AND DEPENDENCIES
 sudo apt-get install python3-colcon-common-extensions
 sudo apt-get install v4l-utils
-sudo apt-get install ros-eloquent-image-transport-plugins
 sudo apt-get install python-rosdep2
 echo "END"
 echo "=====================================================";
@@ -156,14 +155,14 @@ sudo apt install --no-install-recommends -y \
 sudo apt install --no-install-recommends -y \
   libcunit1-dev
 # install some pip packages needed for rastreator  
-pip install catkin_pkg
-pip install empy
-pip install lark
-pip install numpy
+pip3 install catkin_pkg
+pip3 install empy
+pip3 install lark
+pip3 install numpy
 sudo apt install python3-sympy
-pip install PySide2
-pip install MatPlotLib
-pip install xacro
+pip3 install PySide2
+pip3 install MatPlotLib
+pip3 install xacro
 echo "END"
 echo "=====================================================";
 # THE END
