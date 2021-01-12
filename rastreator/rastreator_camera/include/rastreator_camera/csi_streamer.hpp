@@ -14,8 +14,8 @@
 //
 // Authors: Iñaki Lorente
 
-#ifndef RASTREATOR_CAMERA_PICAM_STREAMER_HPP_
-#define RASTREATOR_CAMERA_PICAM_STREAMER_HPP_
+#ifndef RASTREATOR_CAMERA_CSI_STREAMER_HPP_
+#define RASTREATOR_CAMERA_CSI_STREAMER_HPP_
 
 #include <stdio.h>
 #include <iostream>
@@ -77,4 +77,4 @@ class Streamer : public rclcpp::Node
 
 };
 } // namespace camera
-#endif // RASTREATOR_CAMERA_PICAM_STREAMER_HPP_
+#endif // RASTREATOR_CAMERA_CSI_STREAMER_HPP_

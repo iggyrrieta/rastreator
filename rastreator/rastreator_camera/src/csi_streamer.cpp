@@ -20,17 +20,17 @@
 #include <memory>
 #include <string>
 
-#include "rastreator_camera/picam_streamer.hpp"
+#include "rastreator_camera/csi_streamer.hpp"
 
 using namespace camera;
 using namespace std::chrono_literals;
 
 
 Streamer::Streamer() : 
-      Node("picam_streamer")
+      Node("csi_streamer")
 {
 
-  RCLCPP_INFO(this->get_logger(), "Picam streamer ON");
+  RCLCPP_INFO(this->get_logger(), "CSI streamer ON");
 
   this->declare_parameter("configuration.cap_width");
   this->declare_parameter("configuration.cap_height");
@@ -45,12 +45,12 @@ Streamer::Streamer() :
   this->get_parameter_or<int>("configuration.cap_width", configuration_.cap_width, 1280);
   this->get_parameter_or<int>("configuration.cap_height", configuration_.cap_height, 720);
   this->get_parameter_or<std::string>("configuration.frame_id", configuration_.frame_id, "camera");
-  this->get_parameter_or<std::string>("configuration.camera_name", configuration_.camera_name, "raspicam");
+  this->get_parameter_or<std::string>("configuration.camera_name", configuration_.camera_name, "csicam");
   this->get_parameter_or<int>("configuration.display_width", configuration_.display_width, 640);
   this->get_parameter_or<int>("configuration.display_height", configuration_.display_height, 480);
   this->get_parameter_or<double>("configuration.framerate", configuration_.framerate, 90);
   this->get_parameter_or<int>("configuration.flip_mode", configuration_.flip_mode, 2);
-  this->get_parameter_or<std::string>("configuration.camera_calibration_file", configuration_.camera_calibration_file, "package://rastreator_camera/param/picam_calibration.yaml");
+  this->get_parameter_or<std::string>("configuration.camera_calibration_file", configuration_.camera_calibration_file, "package://rastreator_camera/param/csi_calibration.yaml");
 
   // Image transport publisher
   camera_transport_pub_ = image_transport::create_camera_publisher(this, "/image_raw");

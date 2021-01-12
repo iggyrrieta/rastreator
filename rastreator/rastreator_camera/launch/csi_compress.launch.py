@@ -27,7 +27,7 @@ from launch_ros.actions import Node
 pkg_name = 'rastreator_camera'
 # Folder inside package to find yaml
 param_folder = 'param'
-param_file = 'picam_conf.yaml'
+param_file = 'csi_conf.yaml'
 
 #=====================================
 #    LAUNCH CODE: raspberry PI-CAMERA
@@ -46,7 +46,7 @@ def generate_launch_description():
         # Camera 
         Node(
             package='rastreator_camera',
-            node_executable='picam_streamer',
+            node_executable='csi_streamer',
             parameters=[params_dir],
             output='screen'),
         # Compress image 

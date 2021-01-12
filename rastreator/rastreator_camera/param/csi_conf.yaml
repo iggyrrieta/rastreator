@@ -5,12 +5,12 @@ picam_streamer:
       cap_width: 1280
       cap_height: 720
       frame_id: "camera"
-      camera_name: "raspicam"
+      camera_name: csicam"
       display_width: 640
       display_height: 480
       framerate: 90
       # 0=reverse, 2=normal
       flip_mode: 2 
-      camera_calibration_file: "package://rastreator_camera/param/picam_calibration.yaml"
+      camera_calibration_file: "package://rastreator_camera/param/csi_calibration.yaml"
         
 
