@@ -252,9 +252,9 @@
     </joint>
 
     <!--**************************************************************-->
-    <!--CAMERA D435-->
+    <!--CAMERA D435 | CSI CAM, testing (change d435 for camera) -->
     <!--**************************************************************-->
-    <link name="d435_link">
+    <link name="camera">
       <!--INERTIA-->
       <!--Not calling macro, just small values-->
       <inertial>
@@ -273,9 +273,9 @@
         <material name="dark"/>
       </visual>
     </link>
-    <joint name="d435_joint" type="fixed">
+    <joint name="camera_joint" type="fixed">
       <origin rpy="0 0 0" xyz="${camera_d435_x} ${camera_d435_y} ${camera_d435_z}"/>
-      <child  link="d435_link"/>
+      <child  link="camera"/>
       <parent link="base_link"/>
     </joint>
     
@@ -358,7 +358,7 @@
       <material>Gazebo/FlatBlack</material>
     </gazebo>
 
-    <gazebo reference="d435_link">
+    <gazebo reference="camera_link">
       <material>Gazebo/FlatBlack</material>
     </gazebo>
   
@@ -451,8 +451,8 @@
       </visual>
   
       <sensor name="lidar_plugin" type="ray">
-        <always_on>true</always_on>
-        <visualize>true</visualize>
+        <always_on>false</always_on>
+        <visualize>false</visualize>
         <update_rate>${update_rate}</update_rate>
         <ray>
           <scan>
