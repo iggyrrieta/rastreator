@@ -15,18 +15,26 @@ Open `~/.bashrc` with your favourite editor and insert the following:
 #                         Iñaki Lorente @2020 
 #=========================================================================
 
+#=============
+# Alias control
+#=============
+alias start_cam='ros2 launch rastreator_bringup start_real_csicam.launch.py'
+alias orb_map='ros2 launch rastreator_camera orb_slam2_csi_map_launch.py'
+alias orb_loc='ros2 launch rastreator_camera orb_slam2_csi_loc_launch.py'
 
 #=============
 # ROS | ROS2
 #=============
 export ROS_DISTRO=eloquent 
-export ROS_dir=ros2_ws        #CHANGE 1: THIS USING YOUR ROS2 FOLDER NAME
+export ROS_dir=ros        #CHANGE 1: THIS USING YOUR ROS2 FOLDER NAME
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/$ROS_dir/$ROS_DISTRO/install/local_setup.bash
 
 # Domain (security, any number you want to use)
 export ROS_DOMAIN_ID=21
+
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 #=============
 # GAZEBO
