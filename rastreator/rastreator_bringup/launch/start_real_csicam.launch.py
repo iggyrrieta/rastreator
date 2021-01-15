@@ -46,8 +46,14 @@ def generate_launch_description():
     return LaunchDescription([
 
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([launch_file_dir, '/state_publisher.launch.py']),
+            PythonLaunchDescriptionSource([launch_file_dir, '/sp_csicam.launch.py']),
             launch_arguments={'use_sim_time': use_sim_time}.items(),
+        ),
+        ExecuteProcess(
+            name='START-tf2',
+            cmd=['ros2', 'launch', 'rastreator_bringup', 'tf2.launch.py'],
+            output = 'screen',
+            shell='True'
         ),
         ExecuteProcess(
             name='START-RASTREATOR',

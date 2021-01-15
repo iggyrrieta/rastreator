@@ -42,15 +42,15 @@ Streamer::Streamer() :
   this->declare_parameter("configuration.flip_mode");
   this->declare_parameter("configuration.camera_calibration_file");
 
-  this->get_parameter_or<int>("configuration.cap_width", configuration_.cap_width, 1280);
-  this->get_parameter_or<int>("configuration.cap_height", configuration_.cap_height, 720);
-  this->get_parameter_or<std::string>("configuration.frame_id", configuration_.frame_id, "camera");
+  this->get_parameter_or<int>("configuration.cap_width", configuration_.cap_width, 1920);
+  this->get_parameter_or<int>("configuration.cap_height", configuration_.cap_height, 1080);
+  this->get_parameter_or<std::string>("configuration.frame_id", configuration_.frame_id, "csicam_link");
   this->get_parameter_or<std::string>("configuration.camera_name", configuration_.camera_name, "csicam");
   this->get_parameter_or<int>("configuration.display_width", configuration_.display_width, 640);
   this->get_parameter_or<int>("configuration.display_height", configuration_.display_height, 480);
-  this->get_parameter_or<double>("configuration.framerate", configuration_.framerate, 90);
+  this->get_parameter_or<double>("configuration.framerate", configuration_.framerate, 30);
   this->get_parameter_or<int>("configuration.flip_mode", configuration_.flip_mode, 2);
-  this->get_parameter_or<std::string>("configuration.camera_calibration_file", configuration_.camera_calibration_file, "package://rastreator_camera/param/csi_calibration.yaml");
+  this->get_parameter_or<std::string>("configuration.camera_calibration_file", configuration_.camera_calibration_file, "package://rastreator_camera/param/csi_calibration_30.yaml");
 
   // Image transport publisher
   camera_transport_pub_ = image_transport::create_camera_publisher(this, "/image_raw");

@@ -2,15 +2,15 @@ picam_streamer:
   ros__parameters:
 
     configuration:
-      cap_width: 1280
-      cap_height: 720
-      frame_id: "camera"
+      cap_width: 1920
+      cap_height: 1080
+      frame_id: "csicam_link"
       camera_name: csicam"
       display_width: 640
       display_height: 480
-      framerate: 90
+      framerate: 30
       # 0=reverse, 2=normal
       flip_mode: 2 
-      camera_calibration_file: "package://rastreator_camera/param/csi_calibration.yaml"
+      camera_calibration_file: "package://rastreator_camera/param/csi_calibration_30.yaml"
         
 

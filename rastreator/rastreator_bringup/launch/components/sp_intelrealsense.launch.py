@@ -28,7 +28,7 @@ from launch_ros.actions import Node
 pkg_name = 'rastreator_description'
 # Folder inside package to find model
 dir_model = 'urdf'
-model_name = 'rastreator.urdf'
+model_name = 'rastreator_intelrealsense.urdf'
 
 
 #=====================================

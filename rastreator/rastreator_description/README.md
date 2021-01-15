@@ -150,7 +150,7 @@ $$i_{zz} = \frac{mr²}{2} $$
 Once the `xacro` files is created, it is possible to generate a `URDF` file as follows:
 
 ```
-xacro rastreator.xacro > rastreator.urdf
+xacro rastreator_csicam.xacro > rastreator_csicam.urdf
 ```
 
 In this case I am creating the `urdf` file from the `xacro` file using the python library `xacro`
@@ -162,6 +162,6 @@ In this case I am creating the `urdf` file from the `xacro` file using the pytho
 Once the `urdf` file is created, is it possible to generate a `SDF` file as follows:
 
 ```bash
-gz sdf -p rastreator.urdf > ../model/rastreator_description/model.sdf
+gz sdf -p rastreator_csicam.urdf > ../model/rastreator_description/model.sdf
 ```
 

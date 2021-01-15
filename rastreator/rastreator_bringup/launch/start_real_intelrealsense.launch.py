@@ -46,7 +46,7 @@ def generate_launch_description():
     return LaunchDescription([
 
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([launch_file_dir, '/state_publisher.launch.py']),
+            PythonLaunchDescriptionSource([launch_file_dir, '/sp_intelrealsense.launch.py']),
             launch_arguments={'use_sim_time': use_sim_time}.items(),
         ),
         ExecuteProcess(
