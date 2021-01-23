@@ -75,9 +75,9 @@
     </xacro:macro>
 
     <!--**************************************************************-->
-    <!--ODOM-->
+    <!--DUUMY LINK-->
     <!--**************************************************************-->
-    <link name="odom"/>
+    <link name="base_footprint"/>
 
     <!--**************************************************************-->
     <!--CHASSIS (base link)-->
@@ -102,7 +102,7 @@
     <!--JOINT-->
     <joint name="base_joint" type="fixed">
       <origin xyz="0.0 0.0 ${wheel_radius-caster_height}" rpy="0 0 0"/> 
-      <parent link="odom"/>
+      <parent link="base_footprint"/>
       <child link="base_link" />
     </joint>
 
@@ -228,7 +228,7 @@
     <joint name="camera_joint" type="fixed">
       <origin rpy="0 0 0" xyz="${camera_d435_x} ${camera_d435_y} ${camera_d435_z}"/>
       <child  link="csicam_link"/>
-      <parent link="odom"/>
+      <parent link="base_link"/>
     </joint>
     
     <!--**************************************************************-->

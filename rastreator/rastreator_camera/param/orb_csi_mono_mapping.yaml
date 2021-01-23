@@ -2,7 +2,7 @@ orb_slam2_mono:
   ros__parameters:
 
     publish_pointcloud: true
-    publish_pose: true
+    publish_pose: false
     localize_only: false
     reset_map: false
 
@@ -11,7 +11,8 @@ orb_slam2_mono:
     map_file: map.bin
 
     pointcloud_frame_id: map
-    camera_frame_id: odom
+    target_frame_id: odom
+    camera_frame_id: csicam_link
     min_num_kf_in_map: 5
 
     #ORB parameters

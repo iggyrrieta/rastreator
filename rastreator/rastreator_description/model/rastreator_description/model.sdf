@@ -1,6 +1,6 @@
 <sdf version='1.6'>
   <model name='rastreator'>
-    <link name='odom'>
+    <link name='base_footprint'>
       <pose frame=''>0 0 0 0 -0 0</pose>
       <inertial>
         <pose frame=''>0 0 0.026505 0 -0 0</pose>
@@ -14,7 +14,7 @@
           <izz>0.0120273</izz>
         </inertia>
       </inertial>
-      <collision name='odom_fixed_joint_lump__base_link_collision'>
+      <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
         <pose frame=''>0 0 0.0205 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -31,7 +31,7 @@
           </friction>
         </surface>
       </collision>
-      <collision name='odom_fixed_joint_lump__caster_front_link_collision_1'>
+      <collision name='base_footprint_fixed_joint_lump__caster_front_link_collision_1'>
         <pose frame=''>0 0 0.0205 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -56,7 +56,7 @@
           </friction>
         </surface>
       </collision>
-      <collision name='odom_fixed_joint_lump__lidar_link_collision_2'>
+      <collision name='base_footprint_fixed_joint_lump__lidar_link_collision_2'>
         <pose frame=''>0 0 0.1475 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -79,7 +79,7 @@
           </friction>
         </surface>
       </collision>
-      <collision name='odom_fixed_joint_lump__imu_link_collision_3'>
+      <collision name='base_footprint_fixed_joint_lump__imu_link_collision_3'>
         <pose frame=''>0 0 0.0205 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -96,7 +96,7 @@
           </friction>
         </surface>
       </collision>
-      <visual name='odom_fixed_joint_lump__base_link_visual'>
+      <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
         <pose frame=''>0 0 0.0205 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -111,7 +111,7 @@
           </script>
         </material>
       </visual>
-      <visual name='odom_fixed_joint_lump__caster_front_link_visual_1'>
+      <visual name='base_footprint_fixed_joint_lump__caster_front_link_visual_1'>
         <pose frame=''>0 0 0.0205 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -126,7 +126,7 @@
           </script>
         </material>
       </visual>
-      <visual name='odom_fixed_joint_lump__lidar_link_visual_2'>
+      <visual name='base_footprint_fixed_joint_lump__lidar_link_visual_2'>
         <pose frame=''>0 0 0.1475 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -147,7 +147,7 @@
           </script>
         </material>
       </visual>
-      <visual name='odom_fixed_joint_lump__imu_link_visual_3'>
+      <visual name='base_footprint_fixed_joint_lump__imu_link_visual_3'>
         <pose frame=''>0 0 0.0205 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -162,6 +162,7 @@
           </script>
         </material>
       </visual>
+      <velocity_decay/>
       <velocity_decay/>
       <velocity_decay/>
       <velocity_decay/>
@@ -209,7 +210,6 @@
         </plugin>
         <pose frame=''>0 0 0.1475 0 -0 0</pose>
       </sensor>
-      <velocity_decay/>
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
@@ -273,7 +273,7 @@
     </link>
     <joint name='wheel_left_joint' type='revolute'>
       <child>left_wheel_link</child>
-      <parent>odom</parent>
+      <parent>base_footprint</parent>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
@@ -347,7 +347,7 @@
     </link>
     <joint name='wheel_right_joint' type='revolute'>
       <child>right_wheel_link</child>
-      <parent>odom</parent>
+      <parent>base_footprint</parent>
       <axis>
         <xyz>0 1 0</xyz>
         <limit>

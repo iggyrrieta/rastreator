@@ -12,7 +12,7 @@ options = {
   map_frame = "map",
   --If working with intelrealsense T265 camera use --> t265_imu
   --else --> imu_link
-  tracking_frame = "t265_pose_optical",
+  tracking_frame = "odom",
   published_frame = "odom",
   odom_frame = "odom", 
   --activar si existe odometria adicional

@@ -17,9 +17,9 @@
     <color rgba="0.4 0.4 0.4 1.0"/>
   </material>
   <!--**************************************************************-->
-  <!--ODOM-->
+  <!--DUUMY LINK-->
   <!--**************************************************************-->
-  <link name="odom"/>
+  <link name="base_footprint"/>
   <!--**************************************************************-->
   <!--CHASSIS (base link)-->
   <!--**************************************************************-->
@@ -45,7 +45,7 @@
   <!--JOINT-->
   <joint name="base_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.0 0.0 0.0205"/>
-    <parent link="odom"/>
+    <parent link="base_footprint"/>
     <child link="base_link"/>
   </joint>
   <!--**************************************************************-->
@@ -168,7 +168,7 @@
   <joint name="camera_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.117 -0.014 0.112"/>
     <child link="csicam_link"/>
-    <parent link="odom"/>
+    <parent link="base_link"/>
   </joint>
   <!--**************************************************************-->
   <!--IMU-->

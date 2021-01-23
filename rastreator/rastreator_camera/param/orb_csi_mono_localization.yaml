@@ -8,10 +8,11 @@ orb_slam2_mono:
 
     # static parameters
     load_map: true
-    map_file: /home/iggy/ros/eloquent/src/orb_slam_2_ros/ros/map/test1.bin
+    map_file: /home/iggy/ros/eloquent/src/orb_slam_2_ros/ros/map/test6.bin
 
     pointcloud_frame_id: map
-    camera_frame_id: odom
+    target_frame_id: odom
+    camera_frame_id: csicam_link
     min_num_kf_in_map: 5
 
     #ORB parameters

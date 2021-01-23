@@ -16,7 +16,7 @@ def generate_launch_description():
         ('/camera/image_raw', '/image_raw'),
         ('/camera/camera_info', '/camera_info'),
         ('/orb_slam2_mono_node/debug_image', '/cam_points'),
-        ('/orb_slam2_mono_node/map', '/map_points')
+        ('/orb_slam2_mono_node/map_points', '/map_points')
     ]
 
     return LaunchDescription([
