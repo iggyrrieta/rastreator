@@ -36,7 +36,7 @@ include_directories(
 )
 
 add_library(${PROJECT_NAME}_lib
-  "src/picam_streamer.cpp"
+  "src/csi_streamer.cpp"
   "src/usb_streamer.cpp"  
 )
 
@@ -53,9 +53,9 @@ ament_target_dependencies(${PROJECT_NAME}_lib
                         )
 
 add_executable(usb_streamer src/usb_streamer.cpp)
-add_executable(picam_streamer src/picam_streamer.cpp)
+add_executable(csi_streamer src/csi_streamer.cpp)
 target_link_libraries(usb_streamer ${PROJECT_NAME}_lib)
-target_link_libraries(picam_streamer ${PROJECT_NAME}_lib)
+target_link_libraries(csi_streamer ${PROJECT_NAME}_lib)
 ament_target_dependencies(usb_streamer
                           rclcpp
                           rclcpp_components
@@ -66,7 +66,7 @@ ament_target_dependencies(usb_streamer
                           camera_calibration_parsers
                           OpenCV
                         )
-ament_target_dependencies(picam_streamer
+ament_target_dependencies(csi_streamer
                           rclcpp
                           rclcpp_components
                           sensor_msgs
@@ -82,7 +82,7 @@ ament_target_dependencies(picam_streamer
 #=====================================
 install(TARGETS
   usb_streamer
-  picam_streamer
+  csi_streamer
   DESTINATION lib/${PROJECT_NAME})   
 
 install(DIRECTORY

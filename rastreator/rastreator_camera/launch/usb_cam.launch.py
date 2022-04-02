@@ -16,7 +16,6 @@
 
 import os
 from ament_index_python.packages import get_package_share_directory
-from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
@@ -35,19 +34,24 @@ param_file = 'usb_conf.yaml'
 def generate_launch_description():
 
     # Parameters
-    params_dir = LaunchConfiguration(
-        'params_dir',
-        default=os.path.join(
-            get_package_share_directory(pkg_name),
-                 param_folder,
-                 param_file))
+    params_dir = os.path.join(get_package_share_directory(pkg_name),
+                 	       param_folder,
+                 	       param_file)
 
     return LaunchDescription([
         # Camera 
         Node(
             package='rastreator_camera',
-            node_executable='usb_streamer',
+            executable='usb_streamer',
             parameters=[params_dir],
+            output='screen'),
+        # Compress image 
+        Node(
+            package='image_transport',
+            executable='republish',
+            arguments=['raw', 'raw'],
+            remappings=[('in','/image_raw'),
+                        ('out','/image_raw/compressed')],
             output='screen')
     ])    
 

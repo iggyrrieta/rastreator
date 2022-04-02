@@ -46,16 +46,16 @@ def generate_launch_description():
         # Camera 
         Node(
             package='rastreator_camera',
-            node_executable='picam_streamer',
+            executable='csi_streamer',
             parameters=[params_dir],
             output='screen'),
         # Compress image 
         Node(
             package='image_transport',
-            node_executable='republish',
-            arguments=['raw', 'compressed'],
+            executable='republish',
+            arguments=['raw', 'raw'],
             remappings=[('in','/image_raw'),
-                        ('out','/image_raw_compressed')],
+                        ('out','/image_raw/compressed')],
             output='screen')
     ])    
 

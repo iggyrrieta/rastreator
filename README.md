@@ -12,11 +12,11 @@ Please check [requirements](https://github.com/iggyrrieta/rastreator/blob/master
 Open a new terminal and go to the repository root folder:
 
 ```bash
-sudo chmod +x rastreator_install.sh
+sudo chmod +x installer/rastreator_install.sh
 ```
 
 ```bash
-./rastreator_install.sh
+.installer/rastreator_install.sh
 ```
 
 This will install all `Ros2` and `Gazebo11` apt packages and also all `Python` dependencies.
@@ -40,7 +40,7 @@ When the installation ends, copy the following in your `~/.bashrc` file:
 
    Go to repository root folder and run in a terminal:
 
-   `pip install -r simulation_requirements.txt`
+   `pip install -r installer/simulation_requirements.txt`
    
 5. Instal the following apt dependencies:
 

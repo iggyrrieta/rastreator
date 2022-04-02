@@ -25,8 +25,7 @@ using namespace camera;
 using namespace std::chrono_literals;
 
 
-Streamer::Streamer() : 
-      Node("Video_streamer")
+Streamer::Streamer() : Node("asgasdga")
 {
 
   RCLCPP_INFO(this->get_logger(), "Video streamer ON");
@@ -45,14 +44,12 @@ Streamer::Streamer() :
   this->get_parameter_or<std::string>("configuration.camera_name", configuration_.camera_name, "usb_cam");
   this->get_parameter_or<int>("configuration.width", configuration_.width, 640);
   this->get_parameter_or<int>("configuration.height", configuration_.height, 480);
-  this->get_parameter_or<double>("configuration.framerate", configuration_.framerate, 30);
+  this->get_parameter_or<int>("configuration.framerate", configuration_.framerate, 30);
   this->get_parameter_or<int>("configuration.flip_mode", configuration_.flip_mode, 2);
-  this->get_parameter_or<std::string>("configuration.camera_calibration_file", configuration_.camera_calibration_file, "package://rastreator_camera/param/usb_conf.yaml");
-
-  rmw_qos_profile_t custom_qos_profile = rmw_qos_profile_sensor_data;
-  camera_transport_pub_ = image_transport::create_camera_publisher(this, "/image_raw",custom_qos_profile);
-  //auto qos = rclcpp::QoS(rclcpp::KeepLast(10));
-  //image_pub_ = this->create_publisher<sensor_msgs::msg::Image>("/image_raw", qos);
+  this->get_parameter_or<std::string>("configuration.camera_calibration_file", configuration_.camera_calibration_file, "package://ros2_camera/config/usb_calibration.yaml");
+  
+	// Camera publisher image
+  camera_transport_pub_ = image_transport::create_camera_publisher(this, "/image_raw");
 
   // Camera calibration file
   cinfo_manager_ = std::make_shared<camera_info_manager::CameraInfoManager>(this, configuration_.camera_name, configuration_.camera_calibration_file);
@@ -61,6 +58,7 @@ Streamer::Streamer() :
   cap.set(cv::CAP_PROP_FRAME_WIDTH, configuration_.width);
   cap.set(cv::CAP_PROP_FRAME_HEIGHT, configuration_.height);
 
+	// Timer to imageCallback
   last_frame_ = std::chrono::steady_clock::now();
   timer_ = this->create_wall_timer(1ms, std::bind(&Streamer::ImageCallback, this));
 }
@@ -142,9 +140,9 @@ void Streamer::ImageCallback()
 /*****************************************************************************
 ** Main
 *****************************************************************************/
-int main()
+int main(int argc, char *argv[])
 {
-  rclcpp::init(0, nullptr);
+  rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<camera::Streamer>());
   rclcpp::shutdown();
 
