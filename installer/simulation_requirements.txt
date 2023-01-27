@@ -1,6 +1,0 @@
-catkin_pkg
-empy
-lark
-numpy
-PySide2
-MatPlotLib

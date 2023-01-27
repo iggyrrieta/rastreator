@@ -14,30 +14,18 @@
 #
 # Authors: Iñaki Lorente
 
-import os
 from launch import LaunchDescription
-from launch_ros.actions import Node
+from launch.actions.execute_process import ExecuteProcess
 
 #=====================================
-#        LAUNCH CODE: lidar
+#             LAUNCH CODE
 #=====================================
 def generate_launch_description():
-
     return LaunchDescription([
-        # RPLIDAR
-         Node(
-            name='rplidar_composition',
-            package='rplidar_ros',
-            executable='rplidar_composition',
-            output='screen',
-            parameters=[{
-                'serial_port': '/dev/ttyUSB1', #ttyUSBx
-                'serial_baudrate': 115200,  # A1
-                'frame_id': 'lidar_link',
-                'inverted': False,
-                'angle_compensate': False, # Esto deberia estar a true, pero a true peta
-                'scan_mode': 'Sensitivity'
-                #'angle_min': 0, #Por defecto 0º
-                #'angle_max': 360 #Por defecto 360º
-            }]),
-    ])    
+        ExecuteProcess(
+            name='STOP-LIDAR service',
+            cmd=['ros2', 'service', 'call', '/stop_motor', 'std_srvs/srv/Empty'],
+            output = 'screen',
+            shell='True'
+        )
+    ])
